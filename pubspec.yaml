@@ -1,0 +1,30 @@
+name: expense_tracker_app
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: ^3.5.3
+
+dependencies:
+  awesome_extensions: ^2.0.19
+  cool_dropdown: ^2.1.1
+  fl_chart: ^0.69.0
+  flutter:
+    sdk: flutter
+  flutter_animate: ^4.5.0
+  flutter_screenutil: ^5.9.3
+  get: ^4.6.6
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  ionicons: ^0.2.2
+  local_auth: ^2.3.0
+  random_avatar: ^0.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
