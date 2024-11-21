@@ -89,10 +89,14 @@ class HomeScreen extends StatelessWidget {
                           transactions.length > 5 ? 5 : transactions.length,
                       itemBuilder: (BuildContext context, int index) {
                         return Slidable(
-                          startActionPane: ActionPane(
+                          endActionPane: ActionPane(
                             motion: const ScrollMotion(),
                             children: [
                               SlidableAction(
+                                borderRadius: BorderRadius.circular(15),
+                                icon: Icons.delete,
+                                backgroundColor: Colors.transparent,
+                                foregroundColor: Colors.red,
                                 onPressed: (context) =>
                                     controller.deleteTransaction(
                                   transactions[index]['timestamp'],
@@ -100,8 +104,12 @@ class HomeScreen extends StatelessWidget {
                               ),
                             ],
                           ),
-                          child: TransactionTile(
-                            transaction: transactions[index],
+                          child: ConstrainedBox(
+                            constraints:
+                                const BoxConstraints.tightFor(height: 100),
+                            child: TransactionTile(
+                              transaction: transactions[index],
+                            ),
                           ),
                         );
                       },
