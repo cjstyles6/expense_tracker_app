@@ -1,12 +1,15 @@
 import 'package:awesome_extensions/awesome_extensions.dart';
+import 'package:expense_tracker_app/features/welcome/controller/auth_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    // AuthController controller = Get.find();
     return Container(
       decoration: const BoxDecoration(
         gradient: LinearGradient(
@@ -26,6 +29,7 @@ class WelcomeScreen extends StatelessWidget {
             padding: const EdgeInsets.all(12),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 30.heightBox,
                 const Text(
@@ -41,14 +45,17 @@ class WelcomeScreen extends StatelessWidget {
                     .fontSize(25.sp)
                     .textColor(Colors.white),
                 30.heightBox,
-                Container(
-                  width: 100.w,
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
+                GestureDetector(
+                  // onTap: () => controller.authenticate(),
+                  child: Container(
+                    width: 100.w,
+                    padding: const EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Center(child: const Text('Continue').bold()),
                   ),
-                  child: Center(child: const Text('Continue').bold()),
                 ),
               ],
             ),

@@ -1,3 +1,4 @@
+import 'package:expense_tracker_app/bindings/auth_binding.dart';
 import 'package:expense_tracker_app/bindings/expense_binding.dart';
 import 'package:expense_tracker_app/features/add_expenses/screen/add_expenses_screen.dart';
 import 'package:expense_tracker_app/features/home/screen/home_screen.dart';
@@ -36,7 +37,7 @@ class AppPages {
     GetPage(
       name: AppRoutes.WELCOME,
       page: () => const WelcomeScreen(),
-      // binding: ExpenseBinding(),
+      binding: AuthBinding(),
       transition: Transition.noTransition,
     ),
   ];
