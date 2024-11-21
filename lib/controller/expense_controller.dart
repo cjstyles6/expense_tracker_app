@@ -5,7 +5,9 @@ import 'package:hive/hive.dart';
 
 class ExpenseController extends GetxController {
   static ExpenseController get instance => Get.find();
+
   late Box box;
+
   RxDouble totalIncome = 0.0.obs;
   RxDouble totalExpense = 0.0.obs;
   RxDouble balance = 0.0.obs;
@@ -61,6 +63,33 @@ class ExpenseController extends GetxController {
     }
   }
 
+  // New method to delete a transaction
+  Future<bool> deleteTransaction(int timestamp) async {
+    try {
+      // Find the index of the transaction to delete
+      final index = box.values
+          .toList()
+          .indexWhere((transaction) => transaction['timestamp'] == timestamp);
+
+      if (index == -1) {
+        debugPrint('Transaction not found');
+        return false;
+      }
+
+      // Delete the transaction
+      await box.deleteAt(index);
+
+      // Recalculate totals and reload transactions
+      calculateTotals();
+      loadTransactions();
+
+      return true;
+    } catch (e) {
+      debugPrint('Error deleting transaction: $e');
+      return false;
+    }
+  }
+
   void calculateTotals() {
     double income = 0;
     double expense = 0;
@@ -82,10 +111,8 @@ class ExpenseController extends GetxController {
     final transactionList = box.values.toList()
       ..sort((a, b) => (b['timestamp'] ?? 0).compareTo(a['timestamp'] ?? 0));
 
-    transactions.value = transactionList
-        // .take(limit)
-        .map((e) => Map<String, dynamic>.from(e))
-        .toList();
+    transactions.value =
+        transactionList.map((e) => Map<String, dynamic>.from(e)).toList();
   }
 
   double getBalance() {
@@ -113,7 +140,7 @@ class ExpenseController extends GetxController {
     return categoryTotals;
   }
 
-  // navigation
+  // Navigation
   Rx<int> selectedIndex = Rx<int>(0);
   void changeSelectedIndex(int index) {
     selectedIndex.value = index;
