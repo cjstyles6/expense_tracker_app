@@ -4,9 +4,10 @@ import 'package:expense_tracker_app/features/add_expenses/screen/add_expenses_sc
 import 'package:expense_tracker_app/features/home/screen/home_screen.dart';
 import 'package:expense_tracker_app/features/home/screen/view_all_transactions_screen.dart';
 import 'package:expense_tracker_app/features/stats/screen/stats_screen.dart';
-import 'package:expense_tracker_app/features/welcome/screen/welcome_screen.dart';
 import 'package:expense_tracker_app/routes/app_routes.dart';
 import 'package:get/get.dart';
+
+import '../features/welcome/screen/welcome_screen.dart';
 
 class AppPages {
   static final pages = [

@@ -47,7 +47,7 @@ class ExpenseController extends GetxController {
   ) async {
     try {
       await box.add({
-        'amount': amount,
+        'amount': amount.toDouble(),
         'date': date,
         'note': note,
         'type': type,
@@ -94,10 +94,15 @@ class ExpenseController extends GetxController {
     double expense = 0;
 
     for (var entry in box.values) {
+      // Safely retrieve 'amount' and cast it to double
+      var amount = entry['amount'] is int
+          ? (entry['amount'] as int).toDouble()
+          : (entry['amount'] as double);
+
       if (entry['type'] == 'Income') {
-        income += entry['amount'];
+        income += amount;
       } else if (entry['type'] == 'Expense') {
-        expense += entry['amount'];
+        expense += amount;
       }
     }
 

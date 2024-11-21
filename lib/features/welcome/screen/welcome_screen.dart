@@ -9,7 +9,7 @@ class WelcomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // AuthController controller = Get.find();
+    AuthController controller = Get.find();
     return Container(
       decoration: const BoxDecoration(
         gradient: LinearGradient(
@@ -46,7 +46,7 @@ class WelcomeScreen extends StatelessWidget {
                     .textColor(Colors.white),
                 30.heightBox,
                 GestureDetector(
-                  // onTap: () => controller.authenticate(),
+                  onTap: () => controller.authenticate(),
                   child: Container(
                     width: 100.w,
                     padding: const EdgeInsets.all(10),

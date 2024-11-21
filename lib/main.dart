@@ -1,4 +1,4 @@
-import 'package:expense_tracker_app/bindings/expense_binding.dart';
+import 'package:expense_tracker_app/bindings/auth_binding.dart';
 import 'package:expense_tracker_app/routes/app_pages.dart';
 import 'package:expense_tracker_app/routes/app_routes.dart';
 import 'package:flutter/material.dart';
@@ -26,8 +26,8 @@ class MainApp extends StatelessWidget {
       },
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
-        initialRoute: AppRoutes.HOME,
-        initialBinding: ExpenseBinding(),
+        initialRoute: AppRoutes.WELCOME,
+        initialBinding: AuthBinding(),
         getPages: AppPages.pages,
       ),
     );
