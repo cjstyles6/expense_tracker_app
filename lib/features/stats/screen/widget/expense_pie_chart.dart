@@ -1,5 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../controller/expense_controller.dart';
 
 class ExpensePieChart extends StatelessWidget {
@@ -15,10 +16,9 @@ class ExpensePieChart extends StatelessWidget {
     // Group small categories into 'Others'
     double othersPercentage = 0.0;
     final filteredCategories = categoryPercentages.entries
-        .where((entry) => entry.value >= 5.0) // Show categories with >= 5%
+        .where((entry) => entry.value >= 5.0)
         .toList();
 
-    // Sum the small categories and add to 'Others'
     for (var entry in categoryPercentages.entries) {
       if (entry.value < 5.0) {
         othersPercentage += entry.value;
@@ -37,12 +37,11 @@ class ExpensePieChart extends StatelessWidget {
       return PieChartSectionData(
         color: isIncome ? Colors.green : Colors.red,
         value: entry.value,
-        title: '${entry.key}\n${entry.value}%',
+        title: '${entry.key}\n${entry.value.toStringAsFixed(0)}%',
         radius: 150,
-        titleStyle: const TextStyle(
-          fontSize: 14,
-          fontWeight: FontWeight.bold,
-          color: Colors.white, // Set percentage text to white
+        titleStyle: TextStyle(
+          fontSize: 12.sp,
+          color: Colors.white,
         ),
       );
     }).toList();

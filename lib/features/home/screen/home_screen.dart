@@ -4,6 +4,7 @@ import 'package:expense_tracker_app/common/widgets/expense_fab.dart';
 import 'package:expense_tracker_app/controller/expense_controller.dart';
 import 'package:expense_tracker_app/features/home/screen/widgets/total_expense_card.dart';
 import 'package:expense_tracker_app/features/home/screen/widgets/transaction_tile.dart';
+import 'package:expense_tracker_app/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -58,6 +59,12 @@ class HomeScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     const Text('Recent Transactions').fontSize(20).bold(),
+                    GestureDetector(
+                      onTap: () => Get.toNamed(AppRoutes.TRANSACTIONS),
+                      child: const Text('View all')
+                          .fontSize(18)
+                          .textColor(Colors.grey),
+                    ),
                   ],
                 ),
                 10.heightBox,
