@@ -2,6 +2,7 @@ import 'package:awesome_extensions/awesome_extensions.dart';
 import 'package:expense_tracker_app/controller/expense_controller.dart';
 import 'package:expense_tracker_app/features/home/screen/widgets/transaction_tile.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get/get.dart';
 
 class ViewAllTransactionsScreen extends StatelessWidget {
@@ -29,14 +30,31 @@ class ViewAllTransactionsScreen extends StatelessWidget {
               ),
               10.heightBox,
               Expanded(
-                child: ListView.builder(
-                  itemCount: controller.transactions.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return TransactionTile(
-                      transaction: controller.transactions[index],
-                    );
-                  },
-                ),
+                child: Obx(() => ListView.builder(
+                      itemCount: controller.transactions.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return Slidable(
+                          endActionPane: ActionPane(
+                            motion: const ScrollMotion(),
+                            children: [
+                              SlidableAction(
+                                borderRadius: BorderRadius.circular(15),
+                                icon: Icons.delete,
+                                backgroundColor: Colors.transparent,
+                                foregroundColor: Colors.red,
+                                onPressed: (context) =>
+                                    controller.deleteTransaction(
+                                  controller.transactions[index]['timestamp'],
+                                ),
+                              ),
+                            ],
+                          ),
+                          child: TransactionTile(
+                            transaction: controller.transactions[index],
+                          ),
+                        );
+                      },
+                    )),
               ),
             ],
           ),
