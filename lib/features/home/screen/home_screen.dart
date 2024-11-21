@@ -7,6 +7,7 @@ import 'package:expense_tracker_app/features/home/screen/widgets/transaction_til
 import 'package:expense_tracker_app/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:random_avatar/random_avatar.dart';
@@ -87,8 +88,21 @@ class HomeScreen extends StatelessWidget {
                       itemCount:
                           transactions.length > 5 ? 5 : transactions.length,
                       itemBuilder: (BuildContext context, int index) {
-                        return TransactionTile(
-                          transaction: transactions[index],
+                        return Slidable(
+                          startActionPane: ActionPane(
+                            motion: const ScrollMotion(),
+                            children: [
+                              SlidableAction(
+                                onPressed: (context) =>
+                                    controller.deleteTransaction(
+                                  transactions[index]['timestamp'],
+                                ),
+                              ),
+                            ],
+                          ),
+                          child: TransactionTile(
+                            transaction: transactions[index],
+                          ),
                         );
                       },
                     );
