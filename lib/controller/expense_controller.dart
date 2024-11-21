@@ -82,7 +82,6 @@ class ExpenseController extends GetxController {
       // Recalculate totals and reload transactions
       calculateTotals();
       loadTransactions();
-
       return true;
     } catch (e) {
       debugPrint('Error deleting transaction: $e');
