@@ -19,7 +19,9 @@ dependencies:
   hive: ^2.2.3
   hive_flutter: ^1.1.0
   ionicons: ^0.2.2
+  # once: ^1.6.3
   local_auth: ^2.3.0
+  once: ^1.6.3
   random_avatar: ^0.0.8
 
 dev_dependencies:

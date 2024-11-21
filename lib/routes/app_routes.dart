@@ -3,5 +3,5 @@ abstract class AppRoutes {
   static const String ADD = '/add';
   static const String STATISTICS = '/statistics';
   static const String TRANSACTIONS = '/transactions';
-  static const String ROUTES = '/routes';
+  static const String WELCOME = '/welcome';
 }

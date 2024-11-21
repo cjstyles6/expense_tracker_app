@@ -34,7 +34,7 @@ class AppPages {
       // transition: Transition.noTransition,
     ),
     GetPage(
-      name: AppRoutes.ROUTES,
+      name: AppRoutes.WELCOME,
       page: () => const WelcomeScreen(),
       // binding: ExpenseBinding(),
       transition: Transition.noTransition,
