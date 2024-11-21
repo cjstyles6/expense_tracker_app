@@ -90,16 +90,16 @@ class HomeScreen extends StatelessWidget {
                       itemBuilder: (BuildContext context, int index) {
                         return Slidable(
                           startActionPane: ActionPane(
-                              motion: const ScrollMotion(),
-                              children: [
-                                SlidableAction(
-                                  onPressed: (context) =>
-                                      controller.deleteTransaction(
-                                    transactions[index]['timestamp'],
-                                  ),
+                            motion: const ScrollMotion(),
+                            children: [
+                              SlidableAction(
+                                onPressed: (context) =>
+                                    controller.deleteTransaction(
+                                  transactions[index]['timestamp'],
                                 ),
-                              ],
-                              d),
+                              ),
+                            ],
+                          ),
                           child: TransactionTile(
                             transaction: transactions[index],
                           ),
